@@ -1,20 +1,31 @@
 package com.nnk.springboot.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "users")
+@DynamicUpdate
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column
     private Integer id;
+
+    @Column
     @NotBlank(message = "Username is mandatory")
     private String username;
+
+    @Column
     @NotBlank(message = "Password is mandatory")
     private String password;
+
+    @Column
     @NotBlank(message = "FullName is mandatory")
     private String fullname;
+
+    @Column
     @NotBlank(message = "Role is mandatory")
     private String role;
 
@@ -55,6 +66,17 @@ public class User {
     }
 
     public void setRole(String role) {
+        this.role = role;
+    }
+
+    public User() {
+    }
+
+    public User(Integer id, String username, String password, String fullname, String role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
         this.role = role;
     }
 }
