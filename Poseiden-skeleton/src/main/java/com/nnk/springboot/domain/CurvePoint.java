@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.sql.Timestamp;
@@ -15,6 +16,7 @@ public class CurvePoint {
     @Column
     private Integer id;
 
+    @NotNull(message = "Must not be null")
     @Column
     private Integer curveId;
 

@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.sql.Timestamp;
@@ -15,11 +16,14 @@ public class BidList {
     @Column
     private Integer BidListId;
 
+    @NotBlank(message = "Account is mandatory")
     @Column
     private String account;
 
+    @NotBlank(message = "Type is mandatory")
     @Column
     private String type;
+
 
     @Column
     private Double bidQuantity;
@@ -77,6 +81,9 @@ public class BidList {
 
     @Column
     private String side;
+
+
+    // Getters & Setters
 
     public Integer getBidListId() {
         return BidListId;
@@ -253,6 +260,9 @@ public class BidList {
     public void setSide(String side) {
         this.side = side;
     }
+
+
+    // Constructors
 
     public BidList() {
     }
