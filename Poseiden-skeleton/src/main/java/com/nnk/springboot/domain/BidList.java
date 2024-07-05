@@ -7,7 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "bidlist")
+@Table(name = "BidList")
 @DynamicUpdate
 public class BidList {
 

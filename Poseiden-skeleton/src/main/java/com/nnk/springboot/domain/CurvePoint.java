@@ -7,7 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "curvepoint")
+@Table(name = "CurvePoint")
 @DynamicUpdate
 public class CurvePoint {
 

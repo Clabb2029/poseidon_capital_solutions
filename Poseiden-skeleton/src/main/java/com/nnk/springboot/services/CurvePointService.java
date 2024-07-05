@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class CurveService {
+public class CurvePointService {
 
     @Autowired
     private CurvePointRepository curvePointRepository;
@@ -28,10 +28,11 @@ public class CurveService {
     }
 
     public void updateCurvePoint(Integer id, CurvePoint curvePoint) {
-        CurvePoint curve = curvePointRepository.findById(id).get();
-        curve.setTerm(curvePoint.getTerm());
-        curve.setValue(curvePoint.getValue());
-        curvePointRepository.save(curve);
+        CurvePoint fetchedCurvePoint = curvePointRepository.findById(id).get();
+        fetchedCurvePoint.setCurveId(curvePoint.getCurveId());
+        fetchedCurvePoint.setTerm(curvePoint.getTerm());
+        fetchedCurvePoint.setValue(curvePoint.getValue());
+        curvePointRepository.save(fetchedCurvePoint);
     }
 
     public void deleteCurvePointById(Integer id) {

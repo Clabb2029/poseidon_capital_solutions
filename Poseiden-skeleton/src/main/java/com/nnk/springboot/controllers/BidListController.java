@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -28,44 +27,39 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/add")
-    public String addBidForm(Model model) {
+    public String addBidListForm(Model model) {
         model.addAttribute("bidList", new BidList());
         return "bidList/add";
     }
 
     @PostMapping("/bidList/validate")
-    public String validate(@Valid BidList bidList, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String validate(@Valid BidList bidList, BindingResult result) {
         if(result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.bidList", result);
-            redirectAttributes.addFlashAttribute("bidList", bidList);
             return "bidList/add";
         }
-        bidListService.createBid(bidList);
+        bidListService.createBidList(bidList);
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        BidList bid = bidListService.getById(id);
-        model.addAttribute("bidList", bid);
-        model.addAttribute("id", id);
+        BidList bidList = bidListService.getById(id);
+        model.addAttribute("bidList", bidList);
         return "bidList/update";
     }
 
     @PostMapping("/bidList/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String updateBidList(@PathVariable("id") Integer id, @Valid BidList bidList, BindingResult result) {
         if(result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.bidList", result);
-            redirectAttributes.addFlashAttribute("bidList", bidList);
-            return "redirect:/bidList/update/{id}";
+            return "bidList/update";
         }
-        bidListService.updateBid(id, bidList);
+        bidListService.updateBidList(id, bidList);
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
-    public String deleteBid(@PathVariable("id") Integer id) {
-        bidListService.deleteBidById(id);
+    public String deleteBidList(@PathVariable("id") Integer id) {
+        bidListService.deleteBidListById(id);
         return "redirect:/bidList/list";
     }
 }

@@ -23,19 +23,19 @@ public class BidListService {
         return bidListRepository.findById(id).get();
     }
 
-    public void createBid(BidList bidList) {
+    public void createBidList(BidList bidList) {
         bidListRepository.save(bidList);
     }
 
-    public void updateBid(Integer id, BidList bidList) {
-        BidList bid = bidListRepository.findById(id).get();
-        bid.setAccount(bidList.getAccount());
-        bid.setType(bidList.getType());
-        bid.setBidQuantity(bidList.getBidQuantity());
-        bidListRepository.save(bid);
+    public void updateBidList(Integer id, BidList bidList) {
+        BidList fetchedBidList = bidListRepository.findById(id).get();
+        fetchedBidList.setAccount(bidList.getAccount());
+        fetchedBidList.setType(bidList.getType());
+        fetchedBidList.setBidQuantity(bidList.getBidQuantity());
+        bidListRepository.save(fetchedBidList);
     }
 
-    public void deleteBidById(Integer id) {
+    public void deleteBidListById(Integer id) {
         bidListRepository.deleteById(id);
     }
 

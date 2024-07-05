@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "rating")
+@Table(name = "Rating")
 @DynamicUpdate
 public class Rating {
 

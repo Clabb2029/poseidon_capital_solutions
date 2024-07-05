@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "rulename")
+@Table(name = "RuleName")
 @DynamicUpdate
 public class RuleName {
 

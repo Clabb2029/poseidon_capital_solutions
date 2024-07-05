@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 @DynamicUpdate
 public class User {
     @Id
