@@ -27,12 +27,8 @@ public class CurvePointService {
         curvePointRepository.save(curvePoint);
     }
 
-    public void updateCurvePoint(Integer id, CurvePoint curvePoint) {
-        CurvePoint fetchedCurvePoint = curvePointRepository.findById(id).get();
-        fetchedCurvePoint.setCurveId(curvePoint.getCurveId());
-        fetchedCurvePoint.setTerm(curvePoint.getTerm());
-        fetchedCurvePoint.setValue(curvePoint.getValue());
-        curvePointRepository.save(fetchedCurvePoint);
+    public void updateCurvePoint(CurvePoint curvePoint) {
+        curvePointRepository.save(curvePoint);
     }
 
     public void deleteCurvePointById(Integer id) {

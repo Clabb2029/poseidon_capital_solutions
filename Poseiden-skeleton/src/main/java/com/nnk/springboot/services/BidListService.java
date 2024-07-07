@@ -27,12 +27,8 @@ public class BidListService {
         bidListRepository.save(bidList);
     }
 
-    public void updateBidList(Integer id, BidList bidList) {
-        BidList fetchedBidList = bidListRepository.findById(id).get();
-        fetchedBidList.setAccount(bidList.getAccount());
-        fetchedBidList.setType(bidList.getType());
-        fetchedBidList.setBidQuantity(bidList.getBidQuantity());
-        bidListRepository.save(fetchedBidList);
+    public void updateBidList(BidList bidList) {
+        bidListRepository.save(bidList);
     }
 
     public void deleteBidListById(Integer id) {

@@ -54,7 +54,7 @@ public class CurvePointController {
         if(result.hasErrors()) {
             return "curvePoint/update";
         }
-        curvePointService.updateCurvePoint(id, curvePoint);
+        curvePointService.updateCurvePoint(curvePoint);
         return "redirect:/curvePoint/list";
     }
 

@@ -16,12 +16,6 @@
 			<a href="/trade/list">Trade</a>&nbsp;|&nbsp;
 			<a href="/ruleName/list">Rule</a>
 		</div>
-		<div class="col-6 text-right">
-			Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
-			<form th:action="@{/app-logout}" method="POST">
-				<input type="submit" value="Logout"/>
-			</form>
-		</div>
 	</div>
 	<div class="row"><h2>Rating List</h2></div>
 	<div class="row">
@@ -40,13 +34,13 @@
 			<tbody>
 				<tr th:each="rating : ${ratings}">
 					<td style="width: 10%" th:text="${rating.id}"></td>
-					<td th:text="${rating.moodysRating}"></td>
-					<td th:text="${rating.sandPRating}"></td>
-					<td th:text="${rating.fitchRating}"></td>
-					<td th:text="${rating.order}"></td>
+					<td th:text="${rating.getMoodysRating()}"></td>
+					<td th:text="${rating.getSandPRating()}"></td>
+					<td th:text="${rating.getFitchRating()}"></td>
+					<td th:text="${rating.getOrderNumber()}"></td>
 					<td style="width: 15%" class="text-center">
-						<a th:href="@{/rating/update/{id}(id=${rating.id})}">Edit</a>&nbsp;|&nbsp;
-						<a th:href="@{/rating/delete/{id}(id=${rating.id})}">Delete</a>
+						<a th:href="@{/rating/update/{id}(id=${rating.getId()})}">Edit</a>&nbsp;|&nbsp;
+						<a th:href="@{/rating/delete/{id}(id=${rating.getId()})}">Delete</a>
 					</td>
 				</tr>
 			</tbody>

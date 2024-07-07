@@ -53,7 +53,7 @@ public class BidListController {
         if(result.hasErrors()) {
             return "bidList/update";
         }
-        bidListService.updateBidList(id, bidList);
+        bidListService.updateBidList(bidList);
         return "redirect:/bidList/list";
     }
 
