@@ -3,6 +3,7 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.services.RuleNameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,7 +25,9 @@ public class RuleNameController {
     @RequestMapping("/ruleName/list")
     public String home(Model model) {
         List<RuleName> ruleNames = ruleNameService.getAll();
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("ruleNames", ruleNames);
+        model.addAttribute("username", username);
         return "ruleName/list";
     }
 

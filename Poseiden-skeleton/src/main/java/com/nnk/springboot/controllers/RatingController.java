@@ -3,6 +3,7 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.services.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,7 +24,9 @@ public class RatingController {
     @GetMapping("/rating/list")
     public String home(Model model) {
         List<Rating> ratings = ratingService.getAll();
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("ratings", ratings);
+        model.addAttribute("username", username);
         return "rating/list";
     }
 

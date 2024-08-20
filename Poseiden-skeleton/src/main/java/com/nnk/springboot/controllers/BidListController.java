@@ -3,6 +3,7 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.services.BidListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,7 +23,9 @@ public class BidListController {
     @GetMapping("/bidList/list")
     public String home(Model model) {
         List<BidList> bidLists = bidListService.getAll();
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("bidLists", bidLists);
+        model.addAttribute("username", username);
         return "bidList/list";
     }
 

@@ -20,14 +20,13 @@ public class UserController {
     private UserRepository userRepository;
 
     @RequestMapping("/user/list")
-    public String home(Model model)
-    {
+    public String home(Model model) {
         model.addAttribute("users", userRepository.findAll());
         return "user/list";
     }
 
     @GetMapping("/user/add")
-    public String addUser(User bid) {
+    public String addUser() {
         return "user/add";
     }
 

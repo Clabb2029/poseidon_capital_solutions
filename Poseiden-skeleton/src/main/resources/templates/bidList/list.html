@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8"/>
@@ -15,6 +15,12 @@
 			<a href="/rating/list">Ratings</a>&nbsp;|&nbsp;
 			<a href="/trade/list">Trade</a>&nbsp;|&nbsp;
 			<a href="/ruleName/list">Rule</a>
+		</div>
+		<div class="col-6 text-right">
+			Logged in user: <b th:inline="text" class="user" th:text="${username}"></b>
+			<form th:action="@{/app-logout}" method="POST">
+				<input type="submit" value="Logout"/>
+			</form>
 		</div>
 	</div>
 	<div class="row"><h2>Bid List</h2></div>
