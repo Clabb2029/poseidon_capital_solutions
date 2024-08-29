@@ -46,8 +46,12 @@ public class BidListController {
 
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        BidList bidList = bidListService.getById(id);
-        model.addAttribute("bidList", bidList);
+        try {
+            BidList bidList = bidListService.getById(id);
+            model.addAttribute("bidList", bidList);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+        }
         return "bidList/update";
     }
 

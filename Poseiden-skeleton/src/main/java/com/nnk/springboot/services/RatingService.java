@@ -20,7 +20,7 @@ public class RatingService {
     }
 
     public Rating getById(Integer id) {
-        return ratingRepository.findById(id).get();
+        return ratingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No rating found with id: " + id));
     }
 
     public void createRating(Rating rating) {

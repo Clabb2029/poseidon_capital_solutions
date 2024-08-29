@@ -48,8 +48,13 @@ public class RuleNameController {
 
     @GetMapping("/ruleName/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        RuleName ruleName = ruleNameService.getById(id);
-        model.addAttribute("ruleName", ruleName);
+        try {
+            RuleName ruleName = ruleNameService.getById(id);
+            model.addAttribute("ruleName", ruleName);
+        }
+         catch (IllegalArgumentException e) {
+             model.addAttribute("errorMessage", e.getMessage());
+         }
         return "ruleName/update";
     }
 

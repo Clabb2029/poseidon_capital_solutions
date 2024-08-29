@@ -20,7 +20,7 @@ public class CurvePointService {
     }
 
     public CurvePoint getById(Integer id) {
-        return curvePointRepository.findById(id).get();
+        return curvePointRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No curvepoint found with id: " + id));
     }
 
     public void createCurvePoint(CurvePoint curvePoint) {

@@ -20,7 +20,7 @@ public class TradeService {
     }
 
     public Trade getById(Integer id) {
-        return tradeRepository.findById(id).get();
+        return tradeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No trade found with id: " + id));
     }
 
     public void createTrade(Trade trade) {

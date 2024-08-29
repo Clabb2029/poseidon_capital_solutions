@@ -42,6 +42,7 @@
 					<label class="checkbox-inline"><input type="radio" th:field="*{role}" th:value="ADMIN">Admin</label>
 					<label class="checkbox-inline"><input type="radio" th:field="*{role}" th:value="USER">User</label>
 					<p class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></p>
+					<p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
 				</div>
 			</div>
 

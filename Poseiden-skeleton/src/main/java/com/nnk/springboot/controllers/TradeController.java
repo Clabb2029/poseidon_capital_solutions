@@ -48,8 +48,12 @@ public class TradeController {
 
     @GetMapping("/trade/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        Trade trade = tradeService.getById(id);
-        model.addAttribute("trade", trade);
+        try {
+            Trade trade = tradeService.getById(id);
+            model.addAttribute("trade", trade);
+            } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+        }
         return "trade/update";
     }
 

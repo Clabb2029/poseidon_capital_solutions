@@ -47,8 +47,12 @@ public class RatingController {
 
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        Rating rating = ratingService.getById(id);
-        model.addAttribute("rating", rating);
+        try {
+            Rating rating = ratingService.getById(id);
+            model.addAttribute("rating", rating);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+        }
         return "rating/update";
     }
 

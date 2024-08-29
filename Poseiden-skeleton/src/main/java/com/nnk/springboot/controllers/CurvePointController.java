@@ -47,8 +47,12 @@ public class CurvePointController {
 
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        CurvePoint curvePoint = curvePointService.getById(id);
-        model.addAttribute("curvePoint", curvePoint);
+        try {
+            CurvePoint curvePoint = curvePointService.getById(id);
+            model.addAttribute("curvePoint", curvePoint);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+        }
         return "curvePoint/update";
     }
 

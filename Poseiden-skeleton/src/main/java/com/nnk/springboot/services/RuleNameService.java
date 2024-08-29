@@ -20,7 +20,7 @@ public class RuleNameService {
     }
 
     public RuleName getById(Integer id) {
-        return ruleNameRepository.findById(id).get();
+        return ruleNameRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No rulename found with id: " + id));
     }
 
     public void createRuleName(RuleName ruleName) {
