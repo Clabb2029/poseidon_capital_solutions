@@ -8,11 +8,9 @@
 </head>
 <body>
 <div class="container">
-
     <div class="row">
         <h2>Log In With Username and Password</h2>
     </div>
-
     <form th:action="@{/app/login}" th:object="${user}" action="#" method="post" class="form-horizontal" style="width: 100%">
         <div class="d-flex align-items-center">
             <label for="username" class="col-1 p-0">User:</label>

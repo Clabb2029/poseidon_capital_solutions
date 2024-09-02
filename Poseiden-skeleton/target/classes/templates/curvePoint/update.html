@@ -11,7 +11,6 @@
 	<div class="row">
 		<h2>Update CurvePoint</h2>
 	</div>
-
 	<div class="row">
 		<form th:if="${curvePoint.getId() != null}" action="#" th:action="@{/curvePoint/update/{id}(id=${curvePoint.getId()})}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
@@ -35,7 +34,6 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></p>
 				</div>
 			</div>
-
 			<div class="form-group">
 				<div class="col-sm-12">
 					<input type="hidden" th:field="*{id}">
@@ -46,7 +44,6 @@
 		</form>
 		<p th:if="${errorMessage}" th:text="${errorMessage}"></p>
 	</div>
-
 </div>
 </body>
 </html>

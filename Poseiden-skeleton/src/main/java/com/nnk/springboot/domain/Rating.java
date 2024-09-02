@@ -25,6 +25,9 @@ public class Rating {
     @Column
     private Integer orderNumber;
 
+
+    // Getters & Setters
+
     public Integer getId() {
         return id;
     }
@@ -64,6 +67,9 @@ public class Rating {
     public void setOrderNumber(Integer orderNumber) {
         this.orderNumber = orderNumber;
     }
+
+
+    // Constructors
 
     public Rating() {
     }

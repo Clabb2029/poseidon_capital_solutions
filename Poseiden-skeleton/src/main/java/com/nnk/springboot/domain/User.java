@@ -29,6 +29,9 @@ public class User {
     @NotBlank(message = "Role is mandatory")
     private String role;
 
+
+    // Getters & Setters
+
     public Integer getId() {
         return id;
     }
@@ -68,6 +71,9 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+
+    // Constructors
 
     public User() {
     }

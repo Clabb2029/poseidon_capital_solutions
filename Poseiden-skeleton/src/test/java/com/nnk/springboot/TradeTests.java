@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +23,7 @@ public class TradeTests {
 
 	@Test
 	public void tradeTest() {
-		Trade trade = new Trade("Trade Account", "Type");
+		Trade trade = new Trade(1, "Trade Account", "Type", 10d, 20d, 30d, 40d, "benchmark", new Timestamp(new Date().getTime()), "security", "status", "trader", "book", "creationName", new Timestamp(new Date().getTime()), "revisionName", new Timestamp(new Date().getTime()), "dealName", "dealType", "sourceListId", "side");
 
 		// Save
 		trade = tradeRepository.save(trade);

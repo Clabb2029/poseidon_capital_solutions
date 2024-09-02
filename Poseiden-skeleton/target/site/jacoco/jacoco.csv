@@ -1,0 +1,17 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+spring-boot-skeleton,com.nnk.springboot.controllers,LoginController,0,60,0,0,0,16,0,4,0,4
+spring-boot-skeleton,com.nnk.springboot.controllers,HomeController,0,7,0,0,0,3,0,3,0,3
+spring-boot-skeleton,com.nnk.springboot.controllers,UserController,12,100,0,4,0,26,2,9,2,7
+spring-boot-skeleton,com.nnk.springboot.controllers,CurvePointController,0,87,0,4,0,25,0,9,0,7
+spring-boot-skeleton,com.nnk.springboot.controllers,TradeController,0,77,0,0,0,21,0,7,0,7
+spring-boot-skeleton,com.nnk.springboot.controllers,RuleNameController,0,77,0,0,0,21,0,7,0,7
+spring-boot-skeleton,com.nnk.springboot.controllers,BidListController,0,87,0,4,0,25,0,9,0,7
+spring-boot-skeleton,com.nnk.springboot.controllers,RatingController,0,77,0,0,0,21,0,7,0,7
+spring-boot-skeleton,com.nnk.springboot.services,TradeService,6,33,0,0,0,9,1,6,1,6
+spring-boot-skeleton,com.nnk.springboot.services,RatingService,6,33,0,0,0,9,1,6,1,6
+spring-boot-skeleton,com.nnk.springboot.services,CustomUserDetailsService,31,6,0,0,5,3,2,1,2,1
+spring-boot-skeleton,com.nnk.springboot.services,RuleNameService,6,33,0,0,0,9,1,6,1,6
+spring-boot-skeleton,com.nnk.springboot.services,UserService,0,32,0,2,0,8,0,3,0,2
+spring-boot-skeleton,com.nnk.springboot.services,CurvePointService,6,33,0,0,0,9,1,6,1,6
+spring-boot-skeleton,com.nnk.springboot.services,BidListService,6,33,0,0,0,9,1,6,1,6
+spring-boot-skeleton,com.nnk.springboot,Application,5,3,0,0,2,1,1,1,1,1

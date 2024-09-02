@@ -75,6 +75,9 @@ public class Trade {
     @Column
     private String side;
 
+
+    // Getters & Setters
+
     public Integer getTradeId() {
         return tradeId;
     }
@@ -242,6 +245,9 @@ public class Trade {
     public void setSide(String side) {
         this.side = side;
     }
+
+
+    // Constructors
 
     public Trade() {
     }

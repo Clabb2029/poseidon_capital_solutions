@@ -52,6 +52,7 @@ public class CurvePointController {
             model.addAttribute("curvePoint", curvePoint);
         } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("curvePoint", new CurvePoint());
         }
         return "curvePoint/update";
     }

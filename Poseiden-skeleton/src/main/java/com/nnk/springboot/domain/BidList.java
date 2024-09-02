@@ -24,7 +24,6 @@ public class BidList {
     @Column
     private String type;
 
-
     @Column
     private Double bidQuantity;
 

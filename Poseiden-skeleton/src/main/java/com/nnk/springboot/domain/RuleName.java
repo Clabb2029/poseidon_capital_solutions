@@ -31,6 +31,9 @@ public class RuleName {
     @Column
     private String sqlPart;
 
+
+    // Getters & Setters
+
     public Integer getId() {
         return id;
     }
@@ -86,6 +89,9 @@ public class RuleName {
     public void setSqlPart(String sqlPart) {
         this.sqlPart = sqlPart;
     }
+
+
+    // Constructors
 
     public RuleName() {
     }

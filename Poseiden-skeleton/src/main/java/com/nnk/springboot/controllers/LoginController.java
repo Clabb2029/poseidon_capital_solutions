@@ -3,7 +3,6 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +15,6 @@ public class LoginController {
 
     @Autowired
     private UserRepository userRepository;
-
-    private Authentication authentication;
 
     @GetMapping("login")
     public ModelAndView showLogin() {
@@ -42,7 +39,6 @@ public class LoginController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         mav.addObject("errorMsg", errorMessage);
         mav.addObject("username", username);
-        mav.addObject("authentication", authentication);
         mav.setViewName("403");
         return mav;
     }

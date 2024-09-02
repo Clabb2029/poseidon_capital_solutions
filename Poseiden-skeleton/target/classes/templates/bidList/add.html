@@ -8,11 +8,9 @@
 </head>
 <body>
 <div class="container">
-
 	<div class="row">
 		<h2>Add New Bid</h2>
 	</div>
-
 	<div class="row">
 		<form action="#" th:action="@{/bidList/validate}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
@@ -36,8 +34,6 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('bidQuantity')}" th:errors="*{bidQuantity}"></p>
 				</div>
 			</div>
-
-
 			<div class="form-group">
 				<div class="col-sm-12">
 					<a class="btn btn-danger btn-sm" href="/bidList/list">Cancel</a>
@@ -46,7 +42,6 @@
 			</div>
 		</form>
 	</div>
-
 </div>
 </body>
 </html>

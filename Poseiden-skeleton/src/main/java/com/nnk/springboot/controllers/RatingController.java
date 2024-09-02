@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,10 +36,7 @@ public class RatingController {
     }
 
     @PostMapping("/rating/validate")
-    public String validate(@Valid Rating rating, BindingResult result) {
-        if(result.hasErrors()) {
-            return "rating/add";
-        }
+    public String validate(@Valid Rating rating) {
         ratingService.createRating(rating);
         return "redirect:/rating/list";
     }
@@ -52,15 +48,13 @@ public class RatingController {
             model.addAttribute("rating", rating);
         } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("rating", new Rating());
         }
         return "rating/update";
     }
 
     @PostMapping("/rating/update/{id}")
-    public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating, BindingResult result) {
-        if(result.hasErrors()) {
-            return "rating/update";
-        }
+    public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating) {
         ratingService.updateRating(rating);
         return "redirect:/rating/list";
     }

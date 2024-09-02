@@ -11,9 +11,8 @@
 	<div class="row">
 		<h2>Update Bid</h2>
 	</div>
-
 	<div class="row">
-		<form th:if="${bidList.getBidListId()}" action="#" th:action="@{/bidList/update/{id}(id=${bidList.bidListId})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
+		<form th:if="${bidList.getBidListId() != null}" action="#" th:action="@{/bidList/update/{id}(id=${bidList.bidListId})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
 				<label for="account" class="col-sm-2 control-label">Account</label>
 				<div class="col-sm-10">
@@ -35,8 +34,6 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('bidQuantity')}" th:errors="*{bidQuantity}"></p>
 				</div>
 			</div>
-
-
 			<div class="form-group">
 				<div class="col-sm-12">
 					<input type="hidden" th:field="*{bidListId}">
@@ -47,7 +44,6 @@
 		</form>
 		<p th:if="${errorMessage}" th:text="${errorMessage}"></p>
 	</div>
-
 </div>
 </body>
 </html>

@@ -13,7 +13,6 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
-
 @Controller
 public class BidListController {
 
@@ -51,6 +50,7 @@ public class BidListController {
             model.addAttribute("bidList", bidList);
         } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("bidList", new BidList());
         }
         return "bidList/update";
     }

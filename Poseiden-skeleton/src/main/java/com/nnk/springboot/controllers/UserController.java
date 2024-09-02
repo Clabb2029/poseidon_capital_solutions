@@ -60,8 +60,7 @@ public class UserController {
     }
 
     @PostMapping("/user/update/{id}")
-    public String updateUser(@PathVariable("id") Integer id, @Valid User user,
-                             BindingResult result, Model model) {
+    public String updateUser(@PathVariable("id") Integer id, @Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "user/update";
         }
@@ -70,7 +69,6 @@ public class UserController {
         user.setPassword(encoder.encode(user.getPassword()));
         user.setId(id);
         userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
         return "redirect:/user/list";
     }
 
@@ -78,7 +76,6 @@ public class UserController {
     public String deleteUser(@PathVariable("id") Integer id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         userRepository.delete(user);
-        model.addAttribute("users", userRepository.findAll());
         return "redirect:/user/list";
     }
 }

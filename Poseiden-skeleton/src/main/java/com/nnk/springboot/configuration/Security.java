@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
@@ -35,6 +36,7 @@ public class Security {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .httpBasic(Customizer.withDefaults())
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(
                         req -> req
@@ -94,5 +96,4 @@ public class Security {
         }
         return container -> container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/bidList/list"));
     }
-
 }

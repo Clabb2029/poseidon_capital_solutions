@@ -32,6 +32,9 @@ public class CurvePoint {
     @Column
     private Timestamp creationDate;
 
+
+    // Getters & Setters
+
     public Integer getId() {
         return id;
     }
@@ -79,6 +82,9 @@ public class CurvePoint {
     public void setCreationDate(Timestamp creationDate) {
         this.creationDate = creationDate;
     }
+
+
+    // Constructors
 
     public CurvePoint() {
     }

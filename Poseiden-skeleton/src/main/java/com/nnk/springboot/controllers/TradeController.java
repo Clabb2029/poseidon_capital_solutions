@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,10 +37,7 @@ public class TradeController {
     }
 
     @PostMapping("/trade/validate")
-    public String validate(@Valid Trade trade, BindingResult result) {
-        if (result.hasErrors()) {
-            return "trade/add";
-        }
+    public String validate(@Valid Trade trade) {
         tradeService.createTrade(trade);
         return "redirect:/trade/list";
     }
@@ -53,15 +49,13 @@ public class TradeController {
             model.addAttribute("trade", trade);
             } catch (IllegalArgumentException e) {
             model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("trade", new Trade());
         }
         return "trade/update";
     }
 
     @PostMapping("/trade/update/{id}")
-    public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade, BindingResult result) {
-        if(result.hasErrors()) {
-            return "trade/update";
-        }
+    public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade) {
         tradeService.updateTrade(trade);
         return "redirect:/trade/list";
     }

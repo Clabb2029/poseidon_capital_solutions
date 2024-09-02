@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.controllers</a> &gt; <span class="el_source">UserController.java</span></div><h1>UserController.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.controllers;
+
+import com.nnk.springboot.domain.User;
+import com.nnk.springboot.exceptions.UsernameAlreadyExistingException;
+import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.validation.Valid;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+@Controller
+<span class="fc" id="L21">public class UserController {</span>
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(&quot;/user/list&quot;)
+    public String home(Model model) {
+<span class="fc" id="L30">        model.addAttribute(&quot;users&quot;, userRepository.findAll());</span>
+<span class="fc" id="L31">        return &quot;user/list&quot;;</span>
+    }
+
+    @GetMapping(&quot;/user/add&quot;)
+    public String addUser(Model model) {
+<span class="fc" id="L36">        model.addAttribute(&quot;user&quot;, new User());</span>
+<span class="fc" id="L37">        return &quot;user/add&quot;;</span>
+    }
+
+    @PostMapping(&quot;/user/validate&quot;)
+    public String validate(@Valid User user, BindingResult result, RedirectAttributes redirectAttributes) {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (!result.hasErrors()) {</span>
+            try {
+<span class="fc" id="L44">                userService.createUser(user);</span>
+<span class="fc" id="L45">                return &quot;redirect:/user/list&quot;;</span>
+<span class="fc" id="L46">            } catch (IllegalArgumentException | UsernameAlreadyExistingException e) {</span>
+<span class="fc" id="L47">                redirectAttributes.addFlashAttribute(&quot;errorMessage&quot;, e.getMessage());</span>
+<span class="fc" id="L48">                return &quot;redirect:/user/add&quot;;</span>
+            }
+        }
+<span class="fc" id="L51">        return &quot;user/add&quot;;</span>
+    }
+
+    @GetMapping(&quot;/user/update/{id}&quot;)
+    public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) {
+<span class="pc" id="L56">        User user = userRepository.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid user Id:&quot; + id));</span>
+<span class="fc" id="L57">        user.setPassword(&quot;&quot;);</span>
+<span class="fc" id="L58">        model.addAttribute(&quot;user&quot;, user);</span>
+<span class="fc" id="L59">        return &quot;user/update&quot;;</span>
+    }
+
+    @PostMapping(&quot;/user/update/{id}&quot;)
+    public String updateUser(@PathVariable(&quot;id&quot;) Integer id, @Valid User user, BindingResult result) {
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
+<span class="fc" id="L65">            return &quot;user/update&quot;;</span>
+        }
+
+<span class="fc" id="L68">        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();</span>
+<span class="fc" id="L69">        user.setPassword(encoder.encode(user.getPassword()));</span>
+<span class="fc" id="L70">        user.setId(id);</span>
+<span class="fc" id="L71">        userRepository.save(user);</span>
+<span class="fc" id="L72">        return &quot;redirect:/user/list&quot;;</span>
+    }
+
+    @GetMapping(&quot;/user/delete/{id}&quot;)
+    public String deleteUser(@PathVariable(&quot;id&quot;) Integer id, Model model) {
+<span class="pc" id="L77">        User user = userRepository.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid user Id:&quot; + id));</span>
+<span class="fc" id="L78">        userRepository.delete(user);</span>
+<span class="fc" id="L79">        return &quot;redirect:/user/list&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
