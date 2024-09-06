@@ -25,3 +25,7 @@
 ## Security
 1. Create user service to load user from  database and place in package com.nnk.springboot.services
 2. Add configuration class and place in package com.nnk.springboot.config
+
+## First connection
+1. For your first time log in as admin, use the username "admin" and password "admin".
+1. For your first time log in as user, use the username "user" and password "user".

@@ -92,5 +92,5 @@ CREATE TABLE Users (
   PRIMARY KEY (Id)
 );
 
-insert into Users(fullname, username, password, role) values("Administrator", "admin", "$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa", "ADMIN");
-insert into Users(fullname, username, password, role) values("User", "user", "$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa", "USER");
+insert into Users(fullname, username, password, role) values("admin", "admin", "$2a$10$GKumtlbkbytTHBshCAkA2uSGAUT2yCRdTpAJfcTjfQRfTkz7VCSre", "ADMIN");
+insert into Users(fullname, username, password, role) values("user", "user", "$2a$10$Tj9Y3OVoerzXpvluambLFekKA8OOJnEC5frcZAE6ePaADDG3LJAO2", "USER");
